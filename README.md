@@ -1,25 +1,26 @@
 # Settlement Engine
 
-Motor de liquidação de transações financeiras com garantia de consistência ACID e idempotência.
+Motor de liquidação de transações financeiras com garantia de consistência, idempotência e observabilidade.
 
 ---
 
-## Características
+## Visão Geral
 
-- ✅ Event Sourcing com append-only log
-- ✅ Saga Pattern para transações distribuídas
-- ✅ Idempotência garantida (X-Idempotent-Key)
-- ✅ Circuit Breaker para resiliência
-- ✅ Observability com Prometheus + Jaeger
+Sistema responsável por processar e liquidar transações financeiras de forma confiável,
+com suporte a event sourcing, saga pattern e circuit breaker.
 
 ---
 
-## Stack
+## Stacks
 
 - Java 21
-- Spring Boot 3.x
-- PostgreSQL 15
+- Spring Boot 3.4.5
+- PostgreSQL 16
 - Redis 7
-- Kafka 3.x
+- Apache Kafka
+- Flyway
+- Testcontainers
+- Resilience4j
+- OpenTelemetry / Micrometer
 
 ---
