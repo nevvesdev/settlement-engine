@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-interface TransacaoJpaRepository extends JpaRepository<Transacao, UUID> {
+public interface TransacaoJpaRepository extends JpaRepository<Transacao, UUID> {
 
     Optional<Transacao> findByIdExterno(String idExterno);
 
