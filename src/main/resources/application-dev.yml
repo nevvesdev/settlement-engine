@@ -12,10 +12,14 @@ spring:
       hibernate:
         format_sql: true
         default_schema: settlement
-  flyway:
-    enabled: true
-    schemas: settlement
-    locations: classpath:db/migration
+    defer-datasource-initialization: true   # <-- adiciona isso
+
+    flyway:
+      enabled: true
+      schemas: settlement
+      locations: classpath:db/migration
+      create-schemas: true
+      default-schema: settlement
   data:
     redis:
       host: localhost
@@ -33,4 +37,4 @@ spring:
 logging:
   level:
     br.com.nevvesdev: DEBUG
-    org.flywaydb: INFO
+    org.flywaydb: DEBUG
