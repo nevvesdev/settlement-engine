@@ -1,40 +1,24 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/settlement_engine
-    username: settlement
-    password: settlement123
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: false
-    properties:
-      hibernate:
-        format_sql: true
-        default_schema: settlement
-    defer-datasource-initialization: true   # <-- adiciona isso
-
-    flyway:
-      enabled: true
-      schemas: settlement
-      locations: classpath:db/migration
-      create-schemas: true
-      default-schema: settlement
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/settlement_engine}
+    username: ${DB_USER:settlement}
+    password: ${DB_PASSWORD:settlement123}
   data:
     redis:
-      host: localhost
-      port: 6379
-      password: redis123
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:redis123}
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
       group-id: settlement-engine
       auto-offset-reset: earliest
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+management:
+  endpoint:
+    health:
+      show-details: always
 
 logging:
   level:
     br.com.nevvesdev: DEBUG
-    org.flywaydb: DEBUG
